@@ -5,8 +5,8 @@ order: 4
 layout: cv
 ---
 
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Dongseong Seo
+SLAM, Machine Learning Engineer.
 
 <div id="webaddress">
 <a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
