@@ -3,8 +3,6 @@ title: Curriculum Vitae
 icon: fas fa-info-circle
 order: 4
 layout: cv
-markdown: kramdown
-style: kjhealy
 ---
 
 # Isaac Newton
