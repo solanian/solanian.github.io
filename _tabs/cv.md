@@ -6,7 +6,7 @@ layout: cv
 ---
 
 # Dongseong Seo
-SLAM, Machine Learning Engineer.
+<!-- SLAM, Machine Learning Engineer. -->
 
 <!-- <div id="webaddress">
 <a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
@@ -14,7 +14,7 @@ SLAM, Machine Learning Engineer.
 </div> -->
 
 
-## Currently
+<!-- ## Currently
 
 Standing on the shoulders of giants
 
@@ -54,11 +54,11 @@ Associate, *French Academy of Science*, Paris, France
 
 
 
-## Publications
+## Publications -->
 
 <!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
 
-### Journals
+<!-- ### Journals
 
 `1669`
 Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
@@ -83,7 +83,7 @@ __Royal Mint__, London
 - Minted coins
 
 `1600`
-__Lucasian professor of Mathematics__, Cambridge University
+__Lucasian professor of Mathematics__, Cambridge University -->
 
 
 
