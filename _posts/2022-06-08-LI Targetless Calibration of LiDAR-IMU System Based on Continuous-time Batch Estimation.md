@@ -9,5 +9,5 @@ tags: [calibration]
 
 링크: https://arxiv.org/pdf/2007.14759.pdf
 
-![](/assets/img/LICALIBPIPELINE.png){: .align_center}
+![licalib-pipeline](/assets/img/LICALIBPIPELINE.png){: .align_center}
 _LI-Calib의 전체 pipeline_
