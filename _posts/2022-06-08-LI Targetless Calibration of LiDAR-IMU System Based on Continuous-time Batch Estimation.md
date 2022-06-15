@@ -11,7 +11,7 @@ image:
 
 # Targetless Calibration of LiDAR-IMU System Based on Continuous-time Batch Estimation
 
-링크: ![https://arxiv.org/pdf/2007.14759.pdf](https://arxiv.org/pdf/2007.14759.pdf)
+링크: [https://arxiv.org/pdf/2007.14759.pdf](https://arxiv.org/pdf/2007.14759.pdf)
 
 ![licalib-pipeline](/assets/img/licalib/LICALIBPIPELINE.png){: .align_center}
 _LI-Calib의 전체 pipeline_
