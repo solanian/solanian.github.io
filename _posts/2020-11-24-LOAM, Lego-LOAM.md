@@ -52,7 +52,7 @@ LOAM의 전제 시스템은 다음과 같다.
             
             그리고 feature point를 골고루 뽑아야 하므로 주변에 feature point가 존재하면 뽑지 않도록 하였고 occluded region의 boudary또한 실제로는 planar인데 edge로 뽑힐 가능성도 있으므로 뽑지 않으며 laser beam에 parallel한 surface는 대체로 unreliable하므로 이또한 뽑지 않도록 한다. 이런 과정을 통해 edge point와 planar point는 아래와 같이 뽑힌다.
             
-            ![노란색: edge 빨간색: planar](LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%201.png)
+            ![노란색: edge 빨간색: planar](/assets/img/LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%201.png)
             
             노란색: edge 빨간색: planar
             
@@ -112,11 +112,11 @@ LOAM의 전제 시스템은 다음과 같다.
     
     ![LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%204.png](/assets/img/LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%204.png)
     
-    lidar mapping은 odometry보다 더 낮은 빈도로 실행되고 sweep이 완성된 후에만 실행된다. odometry에서 구한 motion으로 untwist된 point cloud $\bar{P}_{k+1}$을 world coordinate상의 map에 registration하는 과정이다.
+    lidar mapping은 odometry보다 더 낮은 빈도로 실행되고 sweep이 완성된 후에만 실행된다. odometry에서 구한 motion으로 untwist된 point cloud $$\bar{P}_{k+1}$$을 world coordinate상의 map에 registration하는 과정이다.
     
-    $Q_k$를 sweep $k$가 끝난 시점에서의 pose주변의 cubic area내에 존재하는 map point들의 set이라 하고 $\bar{P}_{k+1}$을 mapping을 통해서 가장 최근에 얻은 transformation인 $T^W_k$으로 transform한 point를 $\bar{Q}_{k+1}$이라 하면 odometry에서 한 것처럼 feature extraction, finding correspondence, motion estimation을 통해서 $\bar{Q}_{k+1}$을 $Q_k$에 registration을 한다.
+    $Q_k$를 sweep $k$가 끝난 시점에서의 pose주변의 cubic area내에 존재하는 map point들의 set이라 하고 $\bar{P}_{k+1}$을 mapping을 통해서 가장 최근에 얻은 transformation인 $T^W_k$으로 transform한 point를 $$\bar{Q}_{k+1}$$이라 하면 odometry에서 한 것처럼 feature extraction, finding correspondence, motion estimation을 통해서 $$\bar{Q}_{k+1}$$을 $$Q_k$$에 registration을 한다.
     
-    mapping에서 $\bar{Q}_{k+1}$에 대한 feature extration은 이미 odomery에서 했기 때문에 그대로 사용한다. odometry가 10Hz로 돌아가고 mapping이 1Hz로 돌아가기 때문에 10배의 feature를 사용하게 된다. 
+    mapping에서 $$\bar{Q}_{k+1}$$에 대한 feature extration은 이미 odomery에서 했기 때문에 그대로 사용한다. odometry가 10Hz로 돌아가고 mapping이 1Hz로 돌아가기 때문에 10배의 feature를 사용하게 된다. 
     
     correspondence 생성은 $\bar{Q}_{k+1}$의 각 feature point마다 주변에 존재하는 $Q_k$의 point의 set $S'$을 구하고 $S$에 대해서 matrix decomposition을 통해 eigenvalue와 eigenvector를 구하고 eigenvalue에서 dominant한 value의 갯수가 2개면 plane, 1개면 edge라고 판별하고 edge line과 planar patch의 position은 $S'$의 geometric center로 삼아서 feature point과 이 center사이의 corresopndence를 생성한다.
     
@@ -162,7 +162,7 @@ computation expense를 줄였지만 성능은 LOAM과 비슷하거나 더 낫다
     
     $S$는 range image상에서 같은 row에 있는 연속적인 point를 사용하였고 LeGO-LOAM 구현 코드에서는 앞뒤로 5개의 point를 사용하였다. 그리고 이 smoothness를 가지고 edge와 planar를 구분한다. (자세한것은 LOAM에서의 설명 참조)
     
-    다른 점은 edge point로 판별되었지만 ground point일 경우는 feature로 사용하지 않으며 $60\degree$씩 6개의 sub-image로 나눠서 edge 와 planar point들을 뽑는다. $\mathbb{F}_e,\mathbb{F}_p$는 6개의 sub image에 있는 모든 feature들의 set이며 $F_e, F_p$는 각각의 sub image에 존재하는 feature들의 set이며 $n_{F_e}, n_{F_p}, n_{\mathbb{F}_e},n_{\mathbb{F}_e}$는 각각 2, 4, 40, 80으로 정했다. feature extracion을 통해 얻은 feature들은 위의 그림 c와 d에 나타나 있다.
+    다른 점은 edge point로 판별되었지만 ground point일 경우는 feature로 사용하지 않으며 $60^{\circ}$씩 6개의 sub-image로 나눠서 edge 와 planar point들을 뽑는다. $\mathbb{F}_e,\mathbb{F}_p$는 6개의 sub image에 있는 모든 feature들의 set이며 $$F_e, F_p$$는 각각의 sub image에 존재하는 feature들의 set이며 $$n_{F_e}, n_{F_p}, n_{\mathbb{F}_e},n_{\mathbb{F}_e}$$는 각각 2, 4, 40, 80으로 정했다. feature extracion을 통해 얻은 feature들은 위의 그림 c와 d에 나타나 있다.
     
 
 ![LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%208.png](/assets/img/LOAM,%20Lego-LOAM%20e6abee5cd52d4cfa929a3dd59f13cf36/Untitled%208.png)
