@@ -75,4 +75,6 @@ Refinement과정은 앞에서 나왔던 과정들을 그저 반복한다는 것�
 
 실제 구현해서 돌린 체감상 ndt를 point를 하나도 안 버리고 처음부터 끝까지 쌓으니까 상당히 오래걸리며 mapping을 하고 그 값을 그대로 다 들고 있으니 메모리도 엄청 잡아먹는다.
 
-[TODO] 실제 실험결과 추가
+저자가 제공한 데이터셋 외에도 테스트를 해봤는데 우선 global 좌표계 기준으로 z방향의 오차는 전혀 못 잡았다. 그리고 NDT로 mapping의 성능에 크게 의존적인데다가 NDT가 모든 lidar의 configuration에 대해서 안정적인 알고리즘은 아니라 lidar가 크게 기울어지면 mapping이 전혀 제대로 되지를 않아 lidar pose가 망가지고 이로 인해서 첫번째 단계인 rotation initialization부터 제대로 안된다. 반대로 여기서는 hand-help로 calibration 할 수 있는 세팅으로 해서 그런지 데이터를 길게 뽑아서 사용하는 것을 전제를 하지 않았던듯 싶다. IMU의 dead rekoning의 신뢰할 수 있는 구간이 매우 짧다보니 좀만 긴 구간의 data를 사용하게 되면 imu pose + initial extrinsic 값으로 mapping을 하는 부분에서 사용된 IMU pose가 아무리 b-spline을 통해서 approximation을 했다 하더라도 제대로 나올 수가 없다보니 mapping이 이상하게 되어서 refinement가 제 기능을 하지를 못한다. 한 30~40초 정도가 안정적으로 mapping 할 수 있는 최대 길이인것 같았다. 사실 이정도 길이나 된다는 것이 오히려 의아하긴 했다. On vehicle 환경에서 data를 취득한다는 가정하에 calibration을 하기 위한 유의미한 pose 변화를 주려면 이정도 시간으로는 턱없이 부족한데 이 알고리즘은 on vehicle에서는 사용하기는 어렵고 센서랙만 따로 떼서 hand held로만 사용 가능해 보인다.
+
+그리고 나중에 알았는데 올해에 저자가 후속논문으로 OA-Licalib을 냈는데 자세히 볼지 안 볼지는 모르겠는데 일단 가볍게 훑어봤을 때는 기본적인 pipeline이 같아서 이것도 마찬가지로 on vehicle로 돌리기에는 문제가 있지 않을까 싶어 보인다.
