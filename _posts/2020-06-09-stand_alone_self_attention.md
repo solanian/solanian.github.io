@@ -1,8 +1,8 @@
 ---
 title: "Stand-Alone Self-Attention in Visual Models 정리"
 date: 2020-06-09
-categories: [Deep Learning]
-tags: [Model, Vision]
+categories: [Model]
+tags: [Deep Learning, Vision]
 use_math: true
 ---
 

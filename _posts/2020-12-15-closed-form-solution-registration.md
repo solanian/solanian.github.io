@@ -2,7 +2,7 @@
 title: "Closed-form solution of absolute orientation using unit quaternions, orthonormal matrices 정리"
 date: 2020-12-15
 categories: [Pointcloud Registration]
-tags: [Pointcloud Registration]
+tags: [Pointcloud, Rigid]
 use_math: true
 ---
 
