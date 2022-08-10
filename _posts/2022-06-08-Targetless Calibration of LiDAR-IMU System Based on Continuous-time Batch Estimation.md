@@ -1,12 +1,8 @@
 ---
-title: "Targetless Calibration of LiDAR-IMU System Based on Continuous-time Batch Estimation"
+title: "Targetless Calibration of LiDAR-IMU System Based on Continuous-time Batch Estimation 정리"
 date: 2022-06-08 15:43:00 +0900
 categories: [calibration]
 tags: [calibration]
-image: 
-    src: /assets/img/licalib/LICALIBSURFEL.png
-    width: 1000
-    height: 400
 use_math: true
 ---
 

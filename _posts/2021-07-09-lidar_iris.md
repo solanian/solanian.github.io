@@ -3,10 +3,6 @@ title: "LiDAR IRIS 정리"
 date: 2021-07-09
 categories: [SLAM]
 tags: [SLAM]
-image: 
-    src: /assets/img/licalib/LICALIBSURFEL.png
-    width: 1000
-    height: 400
 use_math: true
 ---
 

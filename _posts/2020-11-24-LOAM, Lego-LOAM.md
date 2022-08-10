@@ -1,12 +1,8 @@
 ---
-title: "LOAM, Lego-LOAM"
+title: "LOAM, Lego-LOAM 정리"
 date: 2020-11-24
 categories: [SLAM]
 tags: [SLAM]
-image: 
-    src: /assets/img/licalib/LICALIBSURFEL.png
-    width: 1000
-    height: 400
 use_math: true
 ---
 
