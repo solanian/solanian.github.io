@@ -1,6 +1,6 @@
 ---
 title: "3D pointcloud descriptors 총 정리"
-date: 2020-08-24
+date: 2020-08-25
 categories: [Feature Descriptor]
 tags: [Pointcloud]
 use_math: true
