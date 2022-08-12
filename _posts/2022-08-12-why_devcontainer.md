@@ -21,7 +21,7 @@ VScode에서 지원하는 도커 내에서 개발하는데 도움을 주는 개�
 
 docker를 따로 생성하고 실행하는 것을 관리하다보면 몇 가지 작업들을 특히나 포팅을 연속으로 여러가지를 하게 되면 일일이 docker naming도 해줘야하고 image 따로 container도 관리해야 하는게 많아짐. 또한 작업 중에 사용환경도 같이 업데이트가 되고 하다보면 버전 컨트롤이 어려워짐. 그리고 무엇보다 다른 팀원들과 공유를 할때 그 팀원이 docker container를 생성할때 사용하는 flag도 shell script의 형태라든지 어떻게든지 공유를 하긴 해야함.
 
-→ 이러한 도커, 도커 설정, 엮여있는 프로젝트와 업데이트 된 환경도 git으로 관리할 수 있도록 도와주는것이 devcontainer이다. 무엇보다도 다른 사람과 공유되었을때 vscode에서 `rebuild and reopen in container` 이 버튼 하나면 누구나 별다른 설정 필요 없이 같은 환경에서 실행이 가능해진다.
+→ 이러한 도커, 도커 설정, 엮여있는 프로젝트와 업데이트 된 환경도 git으로 관리할 수 있도록 도와주는것이 devcontainer이다. 무엇보다도 다른 사람과 공유되었을때 vscode에서 `Rebuild and reopen in container` 이 버튼 하나면 누구나 별다른 설정 필요 없이 같은 환경에서 실행이 가능해진다.
 
 # 어떻게 쓰는건가?
 
@@ -116,10 +116,10 @@ ENV SHELL /bin/zsh
 	],
 }
 ```
-이 파일들이 있다면 vscode의 화면 아래에 다음과 같은 창이 뜰텐데 Reopen in Container만 눌러주면 서버에서든 로컬에서든 도커에서 native환경처럼 작업할 수 있게 된다.
+이 파일들이 있는 프로젝트를 vscode로 열면 vscode의 화면 아래에 다음과 같은 창이 뜰텐데 `Reopen in container` 만 눌러주면 서버에서든 로컬에서든 도커에서 native환경처럼 작업할 수 있게 된다.
 
 ![Untitled](../../assets/img/Why%20devcontainer%20e604156f27564755952bc65a51e888a4/Untitled%202.png)
 
-Dockerfile과 devcontainer.json을 프로젝트와 같이 관리하면서 얻는 장점은 공동작업이나 다른 사람이 작업한것을 나중에 이어받아서 작업할때 복잡하게 누가 누구의 세팅을 도와줄 필요없이 실행이 가능하다는 점이 있다. 특히나 손뗀지 오래된 코드의 경우 나중에 다시 돌릴 때 이걸 어떻게 돌렸지 싶은 생각이 들면서 엄두가 안나서 버려지는 경우가 많은데 `reopen in container` 하나로 과거의 세팅을 불러올 수 있다. 
+Dockerfile과 devcontainer.json을 프로젝트와 같이 관리하면서 얻는 장점은 공동작업이나 다른 사람이 작업한것을 나중에 이어받아서 작업할때 복잡하게 누가 누구의 세팅을 도와줄 필요없이 실행이 가능하다는 점이 있다. 특히나 손뗀지 오래된 코드의 경우 나중에 다시 돌릴 때 이걸 어떻게 돌렸지 싶은 생각이 들면서 엄두가 안나서 버려지는 경우가 많은데 `Reopen in container` 하나로 과거의 세팅을 불러올 수 있다. 
 
 그리고 dockerfile 내부에 dependency에 대한 정보가 다 들어가 있으니 documentation에 들어가는 노고가 줄게 된다. 공동작업중에 코드와 함께 dependency가 업데이트 되었을 때도 dockerfile을 같이 업데이트 해주면 rebuild 하나로 서로 골머리 아플일 없이 행복할 수 있다.
