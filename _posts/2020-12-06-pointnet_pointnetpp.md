@@ -1,6 +1,6 @@
 ---
 title: "PointNet, PointNet++ 정리"
-date: 2020-12-06
+date: 2018-12-06
 categories: [Object Detection]
 tags: [Pointcloud, Deep Learning]
 use_math: true
