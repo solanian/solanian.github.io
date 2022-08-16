@@ -1,5 +1,5 @@
 ---
-title: "왜 devcontainer를 써야하는가?"
+title: "Why devcontainer?"
 date: 2022-08-12
 categories: [Setting]
 tags: [Docker]
@@ -17,7 +17,7 @@ VScode에서 지원하는 도커 내에서 개발하는데 도움을 주는 개�
 
  
 
-# 그냥 Docker 쓰는 거랑 뭐가 다르냐?
+# 그냥 Docker 쓰는 거랑 뭐가 다른가?
 
 docker를 따로 생성하고 실행하는 것을 관리하다보면 몇 가지 작업들을 특히나 포팅을 연속으로 여러가지를 하게 되면 일일이 docker naming도 해줘야하고 image 따로 container도 관리해야 하는게 많아짐. 또한 작업 중에 사용환경도 같이 업데이트가 되고 하다보면 버전 컨트롤이 어려워짐. 그리고 무엇보다 다른 팀원들과 공유를 할때 그 팀원이 docker container를 생성할때 사용하는 flag도 shell script의 형태라든지 어떻게든지 공유를 하긴 해야함.
 
