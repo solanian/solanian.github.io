@@ -48,7 +48,7 @@ $$
 
 ### Bounding box loss
 
-matching cost와 hungarian loss의 두번째 텀은 둘다 $\mathcal{L}_{box}$인데 많은 detector들이 box prediction을 initial guess를 활용하는 반면 여기서는 직접적으로 prediction을 한다. 이 방법은 구현을 쉽게 해주지만 loss의 scale 문제가 있는데 아래와 같이 IoU loss와 L1 loss의 linear combination으로 loss를 정의하여 L1 loss의 scale문제를 좀 완화시켰다. $\lambda_{iou},\lambda_{L1}$은 hyperparameter이다.
+matching cost와 hungarian loss의 두번째 텀은 둘다 $$\mathcal{L}_{box}$$인데 많은 detector들이 box prediction을 initial guess를 활용하는 반면 여기서는 직접적으로 prediction을 한다. 이 방법은 구현을 쉽게 해주지만 loss의 scale 문제가 있는데 아래와 같이 IoU loss와 L1 loss의 linear combination으로 loss를 정의하여 L1 loss의 scale문제를 좀 완화시켰다. $\lambda_{iou},\lambda_{L1}$은 hyperparameter이다.
 
 $$
 \mathcal{L}_{box}(b_i,\hat b_{\sigma(i)})=\lambda_{iou}\mathcal{L}_{iou}(b_i,\hat b_{\sigma(i)})+\lambda_{L1}\Vert b_i-\hat b_{\sigma(i)}\Vert_1
@@ -145,7 +145,7 @@ DETR 3D는 iterative하며 2D feature map에서 bounding box를 estimate하는 s
 3. bilinear interpolation을 사용해 feature들을 가져와 object query에 합친다. 
 4. multi-head attention을 사용해 object interation을 계산한다.
 
-DETR에서 아이디어를 얻어 각 layer$l\in\{0,...,L-1\}$는 object query$\mathcal{Q}_l=\{q_{l1},...,q_{lM*}\}\subset\mathbb{R}^C$를 통해 작동하며 새로운 set $\mathcal{Q}_{l+1}$을 생성해 낸다. Object query $q_{li}$로부터 predict된 center point(reference point) $c_{li}\in\mathbb{R}^3$는 다음과 같다.
+DETR에서 아이디어를 얻어 각 layer $l\in\{0,...,L-1\}$는 object query$$\mathcal{Q}_l=\{q_{l1},...,q_{lM*}\}\subset\mathbb{R}^C$$를 통해 작동하며 새로운 set $$\mathcal{Q}_{l+1}$$을 생성해 낸다. Object query $q_{li}$로부터 predict된 center point(reference point) $c_{li}\in\mathbb{R}^3$는 다음과 같다.
 
 $$
 c_{li}=\Phi^{ref}(q_{li})
@@ -280,7 +280,7 @@ PETRv2는 PETR에서 이전 frame의 temporal 정보를 사용하여 3D object d
 
 ![Untitled](../../assets/img/Detection_Transformer/Untitled%208.png)
 
-전체적인 framework은 다음과 같다. PERT처럼 3D coordinate와 2D image feature를 뽑고 $t-1$ frame에서의 3D coordinate를 pose transformation($\text{\textcircled A}$)를 사용해 현재 frame $t$로 변환하고 인접한 frame들의 2D feature과 3D coordinate는 각각 concatenated($\text{\textcircled C}$)되고 feautre-guided position encoder(FPE)의 input으로 들어간다. 그리고 FPE는 transformer decoder에 들어가는 key와 value를 생성한다. 그 후에 detection query와 segmentation query를 각각 PETR논문에서 언급된 learnable 3D anchor point와 fixed BEV point로 initialize하여 transformer decoder에 들어가 multi-view image feature와 interaction하여 final prediction 결과를 내보낸다.
+전체적인 framework은 다음과 같다. PERT처럼 3D coordinate와 2D image feature를 뽑고 $t-1$ frame에서의 3D coordinate를 pose transformation(A)을 사용해 현재 frame $t$로 변환하고 인접한 frame들의 2D feature과 3D coordinate는 각각 concatenated(C)되고 feautre-guided position encoder(FPE)의 input으로 들어간다. 그리고 FPE는 transformer decoder에 들어가는 key와 value를 생성한다. 그 후에 detection query와 segmentation query를 각각 PETR논문에서 언급된 learnable 3D anchor point와 fixed BEV point로 initialize하여 transformer decoder에 들어가 multi-view image feature와 interaction하여 final prediction 결과를 내보낸다.
 
 ### Temporal Modeling
 
