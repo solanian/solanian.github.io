@@ -1,8 +1,8 @@
 ---
 title: "Detection Transformer 계열 논문 정리"
 date: 2022-08-16
-categories: [Model]
-tags: [Deep Learning, Vision, Transformer]
+categories: [Object Detection]
+tags: [Deep Learning, Model, Vision, Transformer]
 use_math: true
 ---
 

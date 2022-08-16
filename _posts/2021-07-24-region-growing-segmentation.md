@@ -1,8 +1,8 @@
 ---
 title: "Region Growing Segmentation 정리"
 date: 2021-07-24
-categories: [Metric]
-tags: [Machine Learning]
+categories: [Segmentation]
+tags: [Machine Learning, Pointcloud]
 use_math: true
 ---
 
