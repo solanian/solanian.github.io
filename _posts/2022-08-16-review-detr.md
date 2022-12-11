@@ -1,5 +1,5 @@
 ---
-title: "Detection Transformer 계열 논문 정리"
+title: "DETR에서 PETRv2 까지"
 date: 2022-08-16
 categories: [Object Detection]
 tags: [Deep Learning, Model, Vision, Transformer]
