@@ -11,15 +11,15 @@ use_math: true
 
 Devcontainer 공식문서: [Developing inside a Container using Visual Studio Code Remote Development](https://code.visualstudio.com/docs/remote/containers)
 
-VScode에서 지원하는 도커 내에서 개발하는데 도움을 주는 개발환경 세팅 
+VScode에서 지원하는 도커 내에서 개발하는데 도움을 주는 개발환경 세팅 툴
 
 프로젝트 내부의 `devcontainer.json` 파일을 설정해 주는 것만으로 다른 사람과 쉽게 프로젝트와 개발 환경 공유가 가능해짐.
 
  
 
-# 그냥 Docker 쓰는 거랑 뭐가 다른가?
+# 그냥 컨테이너 빌드해서 공유하면 되지 않나?
 
-docker를 따로 생성하고 실행하는 것을 관리하다보면 몇 가지 작업들을 특히나 포팅을 연속으로 여러가지를 하게 되면 일일이 docker naming도 해줘야하고 image 따로 container도 관리해야 하는게 많아짐. 또한 작업 중에 사용환경도 같이 업데이트가 되고 하다보면 버전 컨트롤이 어려워짐. 그리고 무엇보다 다른 팀원들과 공유를 할때 그 팀원이 docker container를 생성할때 사용하는 flag도 shell script의 형태라든지 어떻게든지 공유를 하긴 해야함.
+docker conatiner를 따로 생성하고 실행하는 것을 관리하다보면 몇 가지 작업들을 특히나 포팅을 연속으로 여러가지를 하게 되면 일일이 docker naming도 해줘야하고 image 따로 container도 관리해야 하는게 많아짐. 또한 작업 중에 사용환경도 같이 업데이트가 되고 하다보면 버전 컨트롤이 어려워짐. 그리고 무엇보다 다른 팀원들과 공유를 할때 그 팀원이 docker container를 생성할때 사용하는 flag도 shell script의 형태라든지 어떻게든지 공유를 하긴 해야함.
 
 → 이러한 도커, 도커 설정, 엮여있는 프로젝트와 업데이트 된 환경도 git으로 관리할 수 있도록 도와주는것이 devcontainer이다. 무엇보다도 다른 사람과 공유되었을때 vscode에서 `Rebuild and reopen in container` 이 버튼 하나면 누구나 별다른 설정 필요 없이 같은 개발 환경에서 작업이 가능해진다. 또한 엄청난 용량을 가지는 docker를 docker hub에서 공유할 필요 없이 간단한 docker script로 공유가 가능해져서 docker 관리 차원에서도 효율적이다.
 
