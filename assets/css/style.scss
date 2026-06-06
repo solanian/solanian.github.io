@@ -24,24 +24,31 @@ $collapsed-sidebar-width: 4.75rem;
     transition: width 0.25s ease, margin-left 0.25s ease, left 0.25s ease;
   }
 
-  #sidebar .sidebar-bottom .sidebar-collapse-toggle {
-    display: block;
-    width: 2.4rem;
+  #sidebar > .sidebar-collapse-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
     padding: 0;
     border: 0;
-    margin-bottom: 1px;
-    background-color: transparent;
+    border-radius: 50%;
+    background: var(--sidebar-btn-bg);
     color: var(--sidebar-muted-color);
-    text-align: center;
+    cursor: pointer;
   }
 
-  #sidebar .sidebar-bottom .sidebar-collapse-toggle > i {
-    font-size: 1.2rem;
-    line-height: 1.75rem;
+  #sidebar > .sidebar-collapse-toggle > i {
+    font-size: 1rem;
+    line-height: 1;
     transition: color 0.35s ease-in-out;
   }
 
-  #sidebar .sidebar-bottom .sidebar-collapse-toggle:hover > i {
+  #sidebar > .sidebar-collapse-toggle:hover > i {
     color: var(--sidebar-active-color);
   }
 
@@ -59,8 +66,14 @@ $collapsed-sidebar-width: 4.75rem;
     left: $collapsed-sidebar-width;
   }
 
+  body[sidebar-collapsed] #sidebar > .sidebar-collapse-toggle {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   body[sidebar-collapsed] #sidebar .profile-wrapper {
-    margin: 3rem 0 1rem;
+    margin: 3.75rem 0 1rem;
     text-align: center !important;
   }
 
@@ -126,38 +139,21 @@ $collapsed-sidebar-width: 4.75rem;
     margin: 0.15rem 0;
     width: 2.4rem;
   }
-
-  body[sidebar-collapsed] #sidebar .sidebar-bottom .sidebar-collapse-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    width: 100%;
-    height: 2.4rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 @media all and (min-width: 1650px) {
-  #sidebar .sidebar-bottom .sidebar-collapse-toggle {
-    width: 2rem;
-    height: 2rem;
-    margin: 0 0.15rem 0.5rem;
+  #sidebar > .sidebar-collapse-toggle {
+    top: 1rem;
+    right: 1.2rem;
   }
 
-  #sidebar .sidebar-bottom .sidebar-collapse-toggle > i {
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: var(--sidebar-btn-bg);
-    font-size: 1rem;
-    line-height: 2rem;
+  body[sidebar-collapsed] #sidebar > .sidebar-collapse-toggle {
+    right: auto;
+    left: 50%;
   }
 
   body[sidebar-collapsed] #sidebar .profile-wrapper {
-    margin-top: 4rem;
+    margin-top: 4.25rem;
   }
 
   body[sidebar-collapsed] #sidebar .sidebar-bottom {

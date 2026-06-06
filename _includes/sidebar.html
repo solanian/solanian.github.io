@@ -3,6 +3,9 @@
 -->
 
 <div id="sidebar" class="d-flex flex-column align-items-end">
+  <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle btn" type="button" aria-label="Collapse sidebar" aria-expanded="true" title="Collapse sidebar">
+    <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+  </button>
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" class="mx-auto">
@@ -58,9 +61,6 @@
       </button>
     {% endunless %}
 
-    <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle btn" type="button" aria-label="Collapse sidebar" aria-expanded="true" title="Collapse sidebar">
-      <i class="fas fa-angle-double-left" aria-hidden="true"></i>
-    </button>
 
     {% if site.data.contact.size > 0 %}
       <span class="icon-border"></span>
