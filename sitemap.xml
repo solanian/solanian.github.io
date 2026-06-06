@@ -12,9 +12,17 @@ layout: compress
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 {% for post in site.posts %}
+  {% capture lastmod %}
+    {% if post.last_modified_at %}
+      {{ post.last_modified_at }}
+    {% else %}
+      {{ post.date }}
+    {% endif %}
+  {% endcapture %}
+
   <url>
-    <loc>{{ site.url | append: site.baseurl | append: post.url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
 
     {% if post.sitemap.changefreq %}
       <changefreq>{{ post.sitemap.changefreq }}</changefreq>
@@ -70,7 +78,7 @@ layout: compress
   {% endcapture %}
 
    <url>
-    <loc>{{ site.url | append: site.baseurl | append: page.url | remove: "index.html" }}</loc>
+    <loc>{{ page.url | remove: "index.html" | absolute_url }}</loc>
     <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
 
     {% if page.sitemap.changefreq %}

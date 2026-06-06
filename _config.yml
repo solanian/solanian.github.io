@@ -21,12 +21,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: I want to know everything             # the main title
+title: Dongseong Seo
 
-tagline: academic notes, thoughts, reviews   # it will display as the sub-title
+tagline: "Perception & SLAM Engineer"
 
-description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+description: >-
+  Dongseong Seo is a perception and SLAM engineer working on 3D object detection, 3D reconstruction, sensor calibration, and real-world spatial intelligence.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://solanian.github.io'
@@ -86,7 +86,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://github.com/solanian.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -119,6 +119,18 @@ assets:
     env:          # [development|production]
 
 paginate: 10
+
+# Keep machine-readable endpoints out of the public sitemap.
+sitemap_exclude:
+  fuzzy:
+    - /assets/
+  accurate:
+    - /404.html
+    - /app.js
+    - /feed.xml
+    - /robots.txt
+    - /sitemap.xml
+    - /sw.js
 
 # ------------ The following options are not recommended to be modified ------------------
 
