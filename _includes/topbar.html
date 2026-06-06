@@ -8,7 +8,7 @@
 
     {% assign paths = page.url | split: '/' %}
 
-    {% if paths.size == 0 or page.layout == 'home' %}
+    {% if paths.size == 0 or page.url == '/' or page.layout == 'home' %}
       <!-- index page -->
       <span>{{ site.data.locales[lang].tabs.home | capitalize }}</span>
 
@@ -48,7 +48,9 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      {% if page.layout == 'home' %}
+      {% if page.url == '/' %}
+        {{- site.data.locales[lang].tabs.home | default: page.title -}}
+      {% elsif page.layout == 'home' %}
         {{- site.data.locales[lang].title | default: site.title -}}
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
