@@ -15,6 +15,7 @@ tabs:
   categories: Categories
   tags: Tags
   archives: Archives
+  cv: CV
 
 # the text displayed in the search bar & search results
 search:
