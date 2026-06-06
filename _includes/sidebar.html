@@ -3,10 +3,6 @@
 -->
 
 <div id="sidebar" class="d-flex flex-column align-items-end">
-  <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
-    <i class="fas fa-angle-left" aria-hidden="true"></i>
-  </button>
-
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" class="mx-auto">
@@ -60,11 +56,15 @@
       <button class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
-
-      {% if site.data.contact.size > 0 %}
-        <span class="icon-border"></span>
-      {% endif %}
     {% endunless %}
+
+    <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle btn" type="button" aria-label="Collapse sidebar" aria-expanded="true" title="Collapse sidebar">
+      <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+    </button>
+
+    {% if site.data.contact.size > 0 %}
+      <span class="icon-border"></span>
+    {% endif %}
 
     {% for entry in site.data.contact %}
       {% capture url %}
@@ -95,86 +95,5 @@
 
   </div> <!-- .sidebar-bottom -->
 
-<script>
-(function() {
-  var attr = "sidebar-collapsed";
-  var key = "solanian-sidebar-collapsed";
-  var query = "(min-width: 850px)";
-  var mql = window.matchMedia(query);
-
-  function readSaved() {
-    try {
-      return window.localStorage.getItem(key) === "true";
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function writeSaved(value) {
-    try {
-      window.localStorage.setItem(key, value ? "true" : "false");
-    } catch (e) {
-      /* Ignore unavailable storage. */
-    }
-  }
-
-  function setCollapsed(value) {
-    var button = document.getElementById("sidebar-collapse-toggle");
-    var icon = button ? button.querySelector("i") : null;
-    var active = value && mql.matches;
-
-    if (active) {
-      document.body.setAttribute(attr, "");
-    } else {
-      document.body.removeAttribute(attr);
-    }
-
-    if (button) {
-      button.setAttribute("aria-expanded", active ? "false" : "true");
-      button.setAttribute("aria-label", active ? "Expand sidebar" : "Collapse sidebar");
-    }
-
-    if (icon) {
-      icon.className = active ? "fas fa-angle-right" : "fas fa-angle-left";
-    }
-  }
-
-  if (readSaved() && mql.matches) {
-    document.body.setAttribute(attr, "");
-  }
-
-  function ready() {
-    var button = document.getElementById("sidebar-collapse-toggle");
-
-    if (!button) {
-      return;
-    }
-
-    setCollapsed(readSaved());
-
-    button.addEventListener("click", function() {
-      var next = !document.body.hasAttribute(attr);
-      writeSaved(next);
-      setCollapsed(next);
-    });
-
-    if (mql.addEventListener) {
-      mql.addEventListener("change", function() {
-        setCollapsed(readSaved());
-      });
-    } else if (mql.addListener) {
-      mql.addListener(function() {
-        setCollapsed(readSaved());
-      });
-    }
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ready);
-  } else {
-    ready();
-  }
-}());
-</script>
 
 </div><!-- #sidebar -->

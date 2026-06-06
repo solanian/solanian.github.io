@@ -24,24 +24,24 @@ $collapsed-sidebar-width: 4.75rem;
     transition: width 0.25s ease, margin-left 0.25s ease, left 0.25s ease;
   }
 
-  .sidebar-collapse-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    z-index: 2;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid var(--main-border-color);
-    border-radius: 50%;
-    background: var(--sidebar-btn-bg);
+  #sidebar .sidebar-bottom .sidebar-collapse-toggle {
+    display: block;
+    width: 2.4rem;
+    padding: 0;
+    border: 0;
+    margin-bottom: 1px;
+    background-color: transparent;
     color: var(--sidebar-muted-color);
-    cursor: pointer;
+    text-align: center;
   }
 
-  .sidebar-collapse-toggle:hover {
+  #sidebar .sidebar-bottom .sidebar-collapse-toggle > i {
+    font-size: 1.2rem;
+    line-height: 1.75rem;
+    transition: color 0.35s ease-in-out;
+  }
+
+  #sidebar .sidebar-bottom .sidebar-collapse-toggle:hover > i {
     color: var(--sidebar-active-color);
   }
 
@@ -60,7 +60,7 @@ $collapsed-sidebar-width: 4.75rem;
   }
 
   body[sidebar-collapsed] #sidebar .profile-wrapper {
-    margin: 3.25rem 0 1rem;
+    margin: 3rem 0 1rem;
     text-align: center !important;
   }
 
@@ -79,7 +79,6 @@ $collapsed-sidebar-width: 4.75rem;
   }
 
   body[sidebar-collapsed] #sidebar .site-title,
-  body[sidebar-collapsed] #sidebar .site-subtitle,
   body[sidebar-collapsed] #sidebar .nav-link span {
     display: none;
   }
@@ -111,6 +110,8 @@ $collapsed-sidebar-width: 4.75rem;
   body[sidebar-collapsed] #sidebar .sidebar-bottom {
     align-items: center;
     flex-direction: column;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
@@ -120,12 +121,39 @@ $collapsed-sidebar-width: 4.75rem;
     display: none;
   }
 
-  body[sidebar-collapsed] #sidebar .sidebar-bottom > button.mode-toggle,
+  body[sidebar-collapsed] #sidebar .sidebar-bottom > button,
   body[sidebar-collapsed] #sidebar .sidebar-bottom > a {
     margin: 0.15rem 0;
-    width: 2rem;
+    width: 2.4rem;
   }
 }
+
+@media all and (min-width: 1650px) {
+  #sidebar .sidebar-bottom .sidebar-collapse-toggle {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.15rem 0.5rem;
+  }
+
+  #sidebar .sidebar-bottom .sidebar-collapse-toggle > i {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--sidebar-btn-bg);
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
+  body[sidebar-collapsed] #sidebar .profile-wrapper {
+    margin-top: 4rem;
+  }
+
+  body[sidebar-collapsed] #sidebar .sidebar-bottom {
+    padding-left: 0;
+  }
+}
+
 
 
 .profile-hero {

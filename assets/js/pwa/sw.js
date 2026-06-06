@@ -38,50 +38,57 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
+  const request = event.request;
 
-        return fetch(event.request)
-          .then(response => {
-            const url = event.request.url;
+  if (request.method !== 'GET') {
+    return;
+  }
 
-            if (event.request.method !== 'GET' ||
-              !verifyDomain(url) ||
-              isExcluded(url)) {
-              return response;
-            }
+  const url = request.url;
+  const shouldCache = verifyDomain(url) && !isExcluded(url);
+  const acceptsHtml = (request.headers.get('accept') || '').includes('text/html');
+  const isNavigation = request.mode === 'navigate' || acceptsHtml;
 
-            /*
-              see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
-             */
-            let responseToCache = response.clone();
+  function cacheResponse(response) {
+    if (shouldCache && response && response.ok) {
+      const responseToCache = response.clone();
 
-            caches.open(cacheName)
-              .then(cache => {
-                /* console.log('[sw] Caching new resource: ' + event.request.url); */
-                cache.put(event.request, responseToCache);
-              });
+      caches.open(cacheName)
+        .then(cache => {
+          cache.put(request, responseToCache);
+        });
+    }
 
-            return response;
-          });
-      })
+    return response;
+  }
+
+  if (isNavigation) {
+    event.respondWith(
+      fetch(request)
+        .then(cacheResponse)
+        .catch(() => caches.match(request))
     );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request)
+      .then(response => response || fetch(request).then(cacheResponse))
+  );
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keyList => {
-          return Promise.all(
-            keyList.map(key => {
-              if(key !== cacheName) {
-                return caches.delete(key);
-              }
-            })
-          );
-    })
+    caches.keys()
+      .then(keyList => {
+        return Promise.all(
+          keyList.map(key => {
+            if (key !== cacheName) {
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+      .then(() => self.clients.claim())
   );
 });
