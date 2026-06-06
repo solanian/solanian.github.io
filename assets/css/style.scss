@@ -104,6 +104,66 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   margin-bottom: 0;
 }
 
+.project-media,
+.project-media-grid {
+  margin: 0.85rem 0 1rem;
+}
+
+.project-media {
+  position: relative;
+  overflow: hidden;
+  min-height: 10rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.4rem;
+  background: rgba(127, 127, 127, 0.08);
+}
+
+.project-media-video {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+}
+
+.project-media iframe,
+.project-media img,
+.project-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.project-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.75rem;
+}
+
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 9rem;
+  padding: 1rem;
+  border-style: dashed;
+  color: var(--text-muted-color);
+  text-align: center;
+}
+
+.media-placeholder span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.media-placeholder strong {
+  color: var(--heading-color);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 576px) {
   .profile-hero {
     align-items: flex-start;
