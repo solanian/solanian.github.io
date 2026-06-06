@@ -67,6 +67,17 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   line-height: 1.2;
 }
 
+.profile-links .profile-link-primary {
+  border-color: var(--link-color);
+  background: var(--link-color);
+  color: var(--main-wrapper-bg);
+  font-weight: 700;
+}
+
+.profile-links .profile-link-primary:hover {
+  color: var(--main-wrapper-bg);
+}
+
 .profile-section {
   margin-top: 2.25rem;
 }
