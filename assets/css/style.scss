@@ -126,6 +126,17 @@ $collapsed-sidebar-width: 4.75rem;
     margin: 0.15rem 0;
     width: 2.4rem;
   }
+
+  body[sidebar-collapsed] #sidebar .sidebar-bottom .sidebar-collapse-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    width: 100%;
+    height: 2.4rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media all and (min-width: 1650px) {
