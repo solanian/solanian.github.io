@@ -22,7 +22,7 @@
     </div>
 
     <div class="site-title mt-3">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a href="{{ '/' | relative_url }}">I want know everything</a>
     </div>
     <div class="site-subtitle font-italic">{{ site.tagline }}</div>
 
@@ -31,7 +31,7 @@
   <ul class="w-100">
 
     <!-- home -->
-    <li class="nav-item{% if page.url == '/' or page.layout == 'home' %}{{ " active" }}{% endif %}">
+    <li class="nav-item{% if page.url == '/' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
         <span>{{ site.data.locales[lang].tabs.home | upcase }}</span>
@@ -40,22 +40,12 @@
     <!-- the real tabs -->
     {% for tab in site.tabs %}
     <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-      {% if tab.url == '/cv/' %}
-        {{relative_url}}
-        <a href="https://drive.google.com/file/d/1rIuUuGCkeIdNCTUC6p3cKCzRFvuR7Fxk/view?usp=sharing" class="nav-link">
-          <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+      <a href="{{ tab.url | relative_url }}" class="nav-link">
+        <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+        {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
-          <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-        </a>
-      {% else %}
-        <a href="{{ tab.url | relative_url }}" class="nav-link">
-          <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
-          <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-        </a>
-      {% endif %}
+        <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+      </a>
     </li> <!-- .nav-item -->
     {% endfor %}
 
