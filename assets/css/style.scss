@@ -28,12 +28,6 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   object-fit: cover;
 }
 
-.profile-hero-copy h2 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-}
-
-.profile-kicker,
 .project-meta {
   margin-bottom: 0.35rem;
   color: var(--text-muted-color);
@@ -43,10 +37,16 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   text-transform: uppercase;
 }
 
-.profile-role {
-  margin-bottom: 0.75rem;
+.profile-callout {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 0.25rem solid var(--heading-color);
+  border-radius: 0.35rem;
+  background: rgba(127, 127, 127, 0.08);
   color: var(--heading-color);
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
 }
 
 .profile-summary {
